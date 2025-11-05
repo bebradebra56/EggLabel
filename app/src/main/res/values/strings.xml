@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Egg Label</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_decoder">Decode</string>
+    <string name="nav_encyclopedia">Guide</string>
+    <string name="nav_favorites">Favorites</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Home Screen -->
+    <string name="home_welcome">Welcome to EggLabel!</string>
+    <string name="home_subtitle">Decode egg markings and learn about egg quality</string>
+    <string name="home_search_hint">Enter code from egg or package</string>
+    <string name="home_recent_checks">Recent Checks</string>
+
+    <!-- Decoder Screen -->
+    <string name="decoder_title">Decode Egg Code</string>
+    <string name="decoder_enter_code">Enter Egg Code</string>
+    <string name="decoder_scan">Scan</string>
+    <string name="decoder_decode">Decode</string>
+
+    <!-- Encyclopedia Screen -->
+    <string name="encyclopedia_title">Encyclopedia</string>
+    <string name="encyclopedia_categories">Categories</string>
+    <string name="encyclopedia_housing">Housing</string>
+    <string name="encyclopedia_countries">Countries</string>
+
+    <!-- Favorites Screen -->
+    <string name="favorites_title">Favorites</string>
+    <string name="favorites_empty">No Favorites Yet</string>
+    <string name="favorites_empty_desc">Start adding your trusted egg producers to access them quickly</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_general">General</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_about">About</string>
+
+    <!-- Egg Status -->
+    <string name="status_fresh">Fresh</string>
+    <string name="status_expiring">Expiring</string>
+    <string name="status_expired">Expired</string>
+
+    <!-- Common -->
+    <string name="button_ok">OK</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_save">Save</string>
+    <string name="button_share">Share</string>
+</resources>

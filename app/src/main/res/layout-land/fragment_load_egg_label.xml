@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/eggLabelBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/egg_label_background" />
+
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/eggLabelLoadingGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="eggLabelProgress, eggLabelProgressText" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/eggLabelStateGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:constraint_referenced_ids="eggLabelStateBack,eggLabelConnectionState" />
+
+    <TextView
+        android:id="@+id/eggLabelProgressText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/titan_one"
+        android:shadowColor="@color/black"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="10"
+        android:text="Loading..."
+        android:textColor="@color/egg_label_yellow"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/eggLabelProgress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/eggLabelProgress"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:indeterminateTint="@color/egg_label_yellow"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+    <ImageView
+        android:id="@+id/eggLabelStateBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/egg_label_land_state_back" />
+
+    <ImageView
+        android:id="@+id/eggLabelConnectionState"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:scaleType="centerInside"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/egg_label_lans_stat" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/eggLabelNotiGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="eggLabelNotifText,eggLabelGrandButton,eggLabelSkipButton,eggLabelNotifText2" />
+
+    <TextView
+        android:id="@+id/eggLabelNotifText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/titan_one"
+        android:gravity="center"
+        android:shadowColor="@color/black"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="5"
+        android:text="Allow notifications about bonuses and promos"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/eggLabelNotifText2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:lineHeight="35dp" />
+
+    <Button
+        android:id="@+id/eggLabelGrandButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/egg_label_btn"
+        android:fontFamily="@font/titan_one"
+        android:shadowColor="@color/black"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="5"
+        android:text="Yes, I Want Bonuses!"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/eggLabelSkipButton"
+        app:layout_constraintEnd_toEndOf="@+id/eggLabelNotifText"
+        app:layout_constraintStart_toStartOf="@+id/eggLabelNotifText" />
+
+    <TextView
+        android:id="@+id/eggLabelSkipButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/titan_one"
+        android:gravity="center"
+        android:shadowColor="@color/black"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="5"
+        android:text="Skip"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/eggLabelGrandButton"
+        app:layout_constraintStart_toStartOf="@+id/eggLabelGrandButton" />
+
+
+    <TextView
+        android:id="@+id/eggLabelNotifText2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/titan_one"
+        android:gravity="center"
+        android:letterSpacing="0"
+        android:shadowColor="@color/black"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="5"
+        android:text="Stay tuned with best offers from our casino"
+        android:textColor="@color/white"
+
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/eggLabelGrandButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:lineHeight="35dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

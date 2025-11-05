@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "942452272551",
+    "project_id": "egglabel-732cd",
+    "storage_bucket": "egglabel-732cd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942452272551:android:a45f4658c8e538ef12da82",
+        "android_client_info": {
+          "package_name": "com.egsi.labsi.sog"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfkdBmMKu9JPRGnYRpUsD9eXVfw-p9sGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

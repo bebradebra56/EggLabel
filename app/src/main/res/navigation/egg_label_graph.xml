@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/egg_label_graph"
+    app:startDestination="@id/eggLabelLoadFragment">
+
+    <fragment
+        android:id="@+id/eggLabelLoadFragment"
+        android:name="com.egsi.labsi.sog.ioegje.presentation.ui.load.EggLabelLoadFragment"
+        android:label="EggLabelLoadFragment" >
+        <action
+            android:id="@+id/action_eggLabelLoadFragment_to_eggLabelV"
+            app:destination="@id/eggLabelV"
+            app:popUpTo="@id/egg_label_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/eggLabelV"
+        android:name="com.egsi.labsi.sog.ioegje.presentation.ui.view.EggLabelV"
+        android:label="EggLabelV" />
+</navigation>
