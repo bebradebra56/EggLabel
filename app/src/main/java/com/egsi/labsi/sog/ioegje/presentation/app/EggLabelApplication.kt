@@ -9,6 +9,7 @@ import com.appsflyer.attribution.AppsFlyerRequestListener
 import com.egsi.labsi.sog.ioegje.presentation.di.eggLabelModule
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -46,7 +47,7 @@ private const val EGG_LABEL_APP_DEV = "SwQQ9mRsYw6qgvyY7kKg4C"
 private const val EGG_LABEL_LIN = "com.egsi.labsi.sog"
 class EggLabelApplication : Application() {
     private var eggLabelIsResumed = false
-
+    private var eggLabelConversionTimeoutJob: Job? = null
     override fun onCreate() {
         super.onCreate()
 
@@ -59,6 +60,7 @@ class EggLabelApplication : Application() {
             EGG_LABEL_APP_DEV,
             object : AppsFlyerConversionListener {
                 override fun onConversionDataSuccess(p0: MutableMap<String, Any>?) {
+                    eggLabelConversionTimeoutJob?.cancel()
                     Log.d(EGG_LABEL_MAIN_TAG, "onConversionDataSuccess: $p0")
 
                     val afStatus = p0?.get("af_status")?.toString() ?: "null"
@@ -77,7 +79,7 @@ class EggLabelApplication : Application() {
 
                                 val resp = response.body()
                                 Log.d(EGG_LABEL_MAIN_TAG, "After 5s: $resp")
-                                if (resp?.get("af_status") == "Organic") {
+                                if (resp?.get("af_status") == "Organic" || resp?.get("af_status") == null) {
                                     eggLabelResume(EggLabelAppsFlyerState.EggLabelError)
                                 } else {
                                     eggLabelResume(
@@ -95,6 +97,7 @@ class EggLabelApplication : Application() {
                 }
 
                 override fun onConversionDataFail(p0: String?) {
+                    eggLabelConversionTimeoutJob?.cancel()
                     Log.d(EGG_LABEL_MAIN_TAG, "onConversionDataFail: $p0")
                     eggLabelResume(EggLabelAppsFlyerState.EggLabelError)
                 }
@@ -118,9 +121,9 @@ class EggLabelApplication : Application() {
 
             override fun onError(p0: Int, p1: String) {
                 Log.d(EGG_LABEL_MAIN_TAG, "AppsFlyer start error: $p0 - $p1")
-                eggLabelResume(EggLabelAppsFlyerState.EggLabelError)
             }
         })
+        eggLabelStartConversionTimeout()
         
         startKoin {
             androidLogger(Level.DEBUG)
@@ -133,7 +136,18 @@ class EggLabelApplication : Application() {
         }
     }
 
+    private fun eggLabelStartConversionTimeout() {
+        eggLabelConversionTimeoutJob = CoroutineScope(Dispatchers.Main).launch {
+            delay(30000)
+            if (!eggLabelIsResumed) {
+                Log.d(EGG_LABEL_MAIN_TAG, "TIMEOUT: No conversion data received in 30s")
+                eggLabelResume(EggLabelAppsFlyerState.EggLabelError)
+            }
+        }
+    }
+
     private fun eggLabelResume(state: EggLabelAppsFlyerState) {
+        eggLabelConversionTimeoutJob?.cancel()
         if (!eggLabelIsResumed) {
             eggLabelIsResumed = true
             eggLabelConversionFlow.value = state
